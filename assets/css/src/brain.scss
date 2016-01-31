@@ -1,3 +1,35 @@
+//Styling for Minion game
+* {
+  box-sizing: border-box;
+}
+#head {
+  text-align: center;
+  font-size: 20px;
+  color: blue;
+}
+
 #board {
-  color: red;
+  margin: 0 auto;
+  margin-top: 8em;
+  width: 100vmin;
+  text-align: center;
+
+  .row {
+    height: 10vmin;
+  }
+  .cell {
+    display: inline-block;
+    width: 10vmin;
+    height: 10vmin;
+    background-color: #ecf0f1;
+    border: solid 1px  #7f8c8d;
+  }
+  i {
+    font-size: 8vmin;
+    line-height: 10vmin;
+
+    &.fa-cubes {
+      color: green;
+    }
+  }
 }
