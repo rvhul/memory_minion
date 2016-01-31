@@ -1,0 +1,36 @@
+{
+  "name": "memory_minion",
+  "version": "1.0.0",
+  "description": "JavaScript based memory game.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvhul/memory_minion.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "CoffeeScript",
+    "HTML",
+    "HTML5",
+    "Memory",
+    "Game",
+    "CSS3",
+    "CSS",
+    "JS",
+    "JQuery"
+  ],
+  "author": "Rahul Malhotra & Jigmet Wangchuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rvhul/memory_minion/issues"
+  },
+  "homepage": "https://github.com/rvhul/memory_minion#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-sass": "^2.1.1"
+  }
+}

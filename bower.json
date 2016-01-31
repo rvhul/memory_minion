@@ -1,0 +1,33 @@
+{
+  "name": "Memory Minion",
+  "description": "JavaScript based memory game.",
+  "main": "index.js",
+  "authors": [
+    "Rahul Malhotra & Jigmet Wangchuk"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "JavaScript",
+    "CoffeeScript",
+    "HTML",
+    "HTML5",
+    "Memory",
+    "Game",
+    "CSS3",
+    "CSS",
+    "JS",
+    "JQuery"
+  ],
+  "homepage": "https://github.com/rvhul/memory_minion",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
