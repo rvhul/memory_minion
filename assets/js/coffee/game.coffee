@@ -1,15 +1,44 @@
 Minion =
-  shapes: ["cubes", "truck", "space-shuttle", "motorcycle", "subway"]
+  # Minion characters within an array.
+  images: ['min11', 'min2', 'min3', 'min4', 'min5', 'min6', 'min7', 'min8','min11', 'min2', 'min3', 'min4', 'min5', 'min6', 'min7', 'min8']
 
-  randomShapeClass: ->
-    "fa-" + Minion.shapes[Math.floor(Math.random()*Minion.shapes.length)]
 
-  populateCellWithShape: ->
-    $.each $(".cell i"), (i, ele) -> $(ele).addClass(Minion.randomShapeClass).addClass('animated').addClass('infinite')
+  # Formula for populating each cell with a random Minion.
+  randomMinionClass: ->
+    Minion.images[Math.floor(Math.random()*Minion.images.length)]
 
+  spliceSss: ->
+    t = Minion.images[Math.floor(Math.random()*Minion.images.length)]
+    Minion.images.splice(t,1)
+
+  # Populates each cell with a random Minion and adds a class of 'randMinion' to it which initialized the randomization function.
+  populateCellWithMinion: ->
+    $.each $(".cell img"), (i, ele) ->
+      randMinion = Minion.randomMinionClass()
+      randMinion = Minion.spliceSss()
+      $(ele).addClass(randMinion).attr('src', "assets/img/#{randMinion}.png")
+
+  # Upon clicking a cell, animation begins by the addition of the animation class and lasts until user clicks a different cell.
+  bindCellClick: ->
+    $('.cell i').click ->
+      $('.rubberBand').removeClass('rubberBand').removeClass('infinite')
+      $(this).addClass('rubberBand').addClass('infinite')
+      lastElementClicked = $(this)
+
+  # Upon clicking the next cell the previous cell animation stops and animation class is removed.
+  deselectCell: ->
+    $('.cell i').click ->
+      $(this).removeClass('rubberBand').removeClass('infinite')
+
+  # Makes all cells invisible after 5 seconds of loading the page.
+  setTimeout: ->
+    window.setTimeout((() -> $('.cell img').css('opacity', '0')), 10000)
 
   init: ->
-    Minion.populateCellWithShape()
+    Minion.populateCellWithMinion()
+    Minion.bindCellClick()
+    # Minion.deselectCell()
+    Minion.setTimeout()
 
 $ ->
   Minion.init()
