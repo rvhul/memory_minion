@@ -3,18 +3,16 @@ var Minion;
 Minion = {
   images: ['min11', 'min2', 'min3', 'min4', 'min5', 'min6', 'min7', 'min8', 'min11', 'min2', 'min3', 'min4', 'min5', 'min6', 'min7', 'min8'],
   randomMinionClass: function() {
-    return Minion.images[Math.floor(Math.random() * Minion.images.length)];
-  },
-  spliceSss: function() {
-    var t;
-    t = Minion.images[Math.floor(Math.random() * Minion.images.length)];
-    return Minion.images.splice(t, 1);
+    var randImage, randIndex;
+    randIndex = Math.floor(Math.random() * Minion.images.length);
+    randImage = Minion.images[randIndex];
+    Minion.images.splice(randIndex, 1);
+    return randImage;
   },
   populateCellWithMinion: function() {
     return $.each($(".cell img"), function(i, ele) {
       var randMinion;
       randMinion = Minion.randomMinionClass();
-      randMinion = Minion.spliceSss();
       return $(ele).addClass(randMinion).attr('src', "assets/img/" + randMinion + ".png");
     });
   },
@@ -39,7 +37,8 @@ Minion = {
   init: function() {
     Minion.populateCellWithMinion();
     Minion.bindCellClick();
-    return Minion.setTimeout();
+    Minion.setTimeout();
+    return Minion.randomMinionClass();
   }
 };
 
