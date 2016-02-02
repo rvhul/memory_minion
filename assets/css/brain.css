@@ -8,7 +8,13 @@
   font-size: 3.5em;
   text-color: white;
   font-family: 'Josefin Slab', serif;
-  font-weight: lighter; }
+  font-weight: lighter;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default; }
 
 #board {
   margin: 0 auto;
@@ -16,11 +22,11 @@
   width: 100vmin;
   text-align: center; }
   #board .row {
-    height: 14vmin; }
+    height: 12vmin; }
   #board .cell {
     display: inline-block;
-    width: 14vmin;
-    height: 14vmin;
+    width: 12vmin;
+    height: 12vmin;
     background-color: #ecf0f1;
     border: solid 1px  #7f8c8d; }
   #board img {
@@ -39,4 +45,10 @@ footer h2 {
   font-size: 1.8em;
   font-style: italic;
   font-family: 'Josefin Slab', serif;
-  font-weight: lighter; }
+  font-weight: lighter;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  cursor: default; }

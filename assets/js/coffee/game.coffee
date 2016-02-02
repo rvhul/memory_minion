@@ -2,10 +2,6 @@ Minion =
   # Minion characters within an array.
   images: ['min1', 'min2', 'min3', 'min4', 'min5', 'min6', 'min7', 'min8', 'min9', 'min10', 'min11', 'min12', 'min13', 'min14', 'min15', 'min16', 'min17', 'min18', 'min1', 'min2', 'min3', 'min4', 'min5', 'min6', 'min7', 'min8', 'min9', 'min10', 'min11', 'min12', 'min13', 'min14', 'min15', 'min16', 'min17', 'min18']
 
-  # randomizeImages: ->
-  #   Minion.images = Minion.images.sort((a, b) -> ((Math.random() < 0.5) ? 1 : -1))
-
-
   # Formula for populating each cell with a random Minion.
   randomMinionClass: ->
     randIndex = Math.floor(Math.random()*Minion.images.length)
@@ -33,36 +29,26 @@ Minion =
     Minion.rowCount = rowNo
     Minion.columnCount = colNo
 
-  # Upon clicking a cell, animation begins by the addition of the animation class and lasts until user clicks a different cell.
-  bindCellClick: ->
-    $('.cell i').click ->
-      $('.rubberBand').removeClass('rubberBand').removeClass('infinite')
-      $(this).addClass('rubberBand').addClass('infinite')
-      lastElementClicked = $(this)
-
-  # Upon clicking the next cell the previous cell animation stops and animation class is removed.
-  deselectCell: ->
-    $('.cell i').click ->
-      $(this).removeClass('rubberBand').removeClass('infinite')
-
-  # Make cell visible again upon a click event by changing the opacity back to 1.
+  # Make cell visible again upon a click event by changing the opacity back to 1. Also checks for a match between two cells by comparing both 'src' attributes.
   makeVisibleCellClick: ->
     $('.cell img').click ->
-      $(this).css('opacity', '1')
+      $(this).css('opacity', '1').addClass('animated').addClass('rubberBand')
       if (Minion.firstclick == true)
         Minion.firstsrc = $(this).attr('src').toString()
+        Minion.firstCell = $(this)
         console.log Minion.firstsrc
         Minion.firstclick = false
       else
         Minion.secondsrc = $(this).attr('src').toString()
+        Minion.secondCell = $(this)
         console.log Minion.secondsrc
         if Minion.firstsrc == Minion.secondsrc
           console.log "Matched"
         else
-          console.log "not matched"
-          $(secondsrc).css('opacity', '0')
+          console.log "Not Matched"
+          (Minion.firstCell).css('opacity', '0')
+          setTimeout (-> (Minion.secondCell).css('opacity', '0')), 500
         Minion.firstclick = true
-
 
   # Makes all cells invisible after 5 seconds of loading the page.
   setTimeout: ->
@@ -74,11 +60,11 @@ Minion =
     Minion.firstclick = true
     Minion.populateCellWithMinion()
     Minion.populateCellWithCoordinates()
-    Minion.bindCellClick()
-    # Minion.deselectCell()
     Minion.setTimeout()
     Minion.randomMinionClass()
-    Minion.makeVisibleCellClick()
+    # Set a delay of 5s before user can click anything within the board.
+    window.setTimeout(Minion.makeVisibleCellClick,5000)
 
 $ ->
   Minion.init()
+  new WOW().init()

@@ -32,34 +32,26 @@ Minion = {
     Minion.rowCount = rowNo;
     return Minion.columnCount = colNo;
   },
-  bindCellClick: function() {
-    return $('.cell i').click(function() {
-      var lastElementClicked;
-      $('.rubberBand').removeClass('rubberBand').removeClass('infinite');
-      $(this).addClass('rubberBand').addClass('infinite');
-      return lastElementClicked = $(this);
-    });
-  },
-  deselectCell: function() {
-    return $('.cell i').click(function() {
-      return $(this).removeClass('rubberBand').removeClass('infinite');
-    });
-  },
   makeVisibleCellClick: function() {
     return $('.cell img').click(function() {
-      $(this).css('opacity', '1');
+      $(this).css('opacity', '1').addClass('animated').addClass('rubberBand');
       if (Minion.firstclick === true) {
         Minion.firstsrc = $(this).attr('src').toString();
+        Minion.firstCell = $(this);
         console.log(Minion.firstsrc);
         return Minion.firstclick = false;
       } else {
         Minion.secondsrc = $(this).attr('src').toString();
+        Minion.secondCell = $(this);
         console.log(Minion.secondsrc);
         if (Minion.firstsrc === Minion.secondsrc) {
           console.log("Matched");
         } else {
-          console.log("not matched");
-          $(secondsrc).css('opacity', '0');
+          console.log("Not Matched");
+          Minion.firstCell.css('opacity', '0');
+          setTimeout((function() {
+            return Minion.secondCell.css('opacity', '0');
+          }), 500);
         }
         return Minion.firstclick = true;
       }
@@ -76,13 +68,13 @@ Minion = {
     Minion.firstclick = true;
     Minion.populateCellWithMinion();
     Minion.populateCellWithCoordinates();
-    Minion.bindCellClick();
     Minion.setTimeout();
     Minion.randomMinionClass();
-    return Minion.makeVisibleCellClick();
+    return window.setTimeout(Minion.makeVisibleCellClick, 5000);
   }
 };
 
 $(function() {
-  return Minion.init();
+  Minion.init();
+  return new WOW().init();
 });
