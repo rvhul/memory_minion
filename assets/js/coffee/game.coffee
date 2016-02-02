@@ -32,7 +32,7 @@ Minion =
   # Make cell visible again upon a click event by changing the opacity back to 1. Also checks for a match between two cells by comparing both 'src' attributes.
   makeVisibleCellClick: ->
     $('.cell img').click ->
-      $(this).css('opacity', '1').addClass('animated').addClass('rubberBand')
+      $(this).css('opacity', '1').addClass('animated').addClass('pulse')
       if (Minion.firstclick == true)
         Minion.firstsrc = $(this).attr('src').toString()
         Minion.firstCell = $(this)
@@ -50,9 +50,35 @@ Minion =
           setTimeout (-> (Minion.secondCell).css('opacity', '0')), 500
         Minion.firstclick = true
 
+  timeAttack: ->
+      window.timeAttack((() -> $('.cell img').css('opacity', '0')),7000)
+    $('#timer-container #timer').TimeCircles
+      'animation': 'smooth'
+      'bg_width': 0.7
+      'fg_width': 0.1
+      'circle_bg_color': '#60686F'
+      'time':
+        'Days':
+          'text': 'Days'
+          'color': '#FFCC66'
+          'show': false
+        'Hours':
+          'text': 'Hours'
+          'color': '#99CCFF'
+          'show': false
+        'Minutes':
+          'text': 'Minutes'
+          'color': '#BBFFBB'
+          'show': false
+        'Seconds':
+          'text': 'Seconds'
+          'color': '#FF9999'
+          'show': true
+
   # Makes all cells invisible after 5 seconds of loading the page.
   setTimeout: ->
-    window.setTimeout((() -> $('.cell img').css('opacity', '0')),5000)
+    window.setTimeout((() -> $('.cell img').css('opacity', '0')),7000)
+
 
   init: ->
     Minion.rowCount = 0
@@ -62,6 +88,7 @@ Minion =
     Minion.populateCellWithCoordinates()
     Minion.setTimeout()
     Minion.randomMinionClass()
+    window.setTimeout(Minion.timeAttack,5000)
     # Set a delay of 5s before user can click anything within the board.
     window.setTimeout(Minion.makeVisibleCellClick,5000)
 

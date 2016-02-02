@@ -2,8 +2,14 @@
   box-sizing: border-box;
   background-color: #E64A19; }
 
+#timer-container {
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  right: 30px; }
+
 #head h1 {
-  margin-top: 2em;
+  margin-top: 1em;
   text-align: center;
   font-size: 3.5em;
   text-color: white;
