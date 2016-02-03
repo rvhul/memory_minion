@@ -1,9 +1,7 @@
 [logo]: http://i.imgur.com/q93k9Ud.png
 ![alt text][logo]
 
-#Memory Minion - *Test your amazing (or lack of) memory!*
-*By Rahul Malhotra & Jigmet Wangchu*
-
+Test your amazing (or lack of) memory!
 ##Built On
 * `HTML5`
 * `CSS3`
@@ -21,3 +19,5 @@ It also uses components from:
 * `Normalize-CSS`
 * `WOW.js`
 * `Gulp`
+
+*By Rahul Malhotra & Jigmet Wangchu*
