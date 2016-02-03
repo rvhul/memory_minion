@@ -1,7 +1,7 @@
 [logo]: http://i.imgur.com/q93k9Ud.png
 ![alt text][logo]
 
-#Memory Minion
+#Memory Minion - *Test your amazing (or lack of) memory!
 *By Rahul Malhotra & Jigmet Wangchu*
 
 ##Built On
@@ -10,7 +10,9 @@
 * `SASS`
 * `CoffeeScript`
 * `JQuery`
+
 It also uses components from:
+
 * `Bower`
 * `Node`
 * `Animate.css`
